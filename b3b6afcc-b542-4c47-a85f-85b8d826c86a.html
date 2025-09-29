@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dragon Age: Origins</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Dragon Age: Origins</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-15/08/2025">15/08/2025</a> 15:50:04</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-15/08/2025">15/08/2025</a> 15:52:00</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-W2P_XXX">W2P_XXX</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-03/11/2009">03/11/2009</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-BioWare Edmonton">BioWare Edmonton</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Electronic Arts">Electronic Arts</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://dragonage.wikia.com/wiki/Dragon_Age:_Origins" target="_blank">Community Wiki</a><br/><a href="https://en.wikipedia.org/wiki/Dragon_Age:_Origins" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/dragonage" target="_blank">Facebook</a><br/><a href="https://www.instagram.com/dragonagegame" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/user/dragonageofficial" target="_blank">YouTube</a><br/><a href="https://store.steampowered.com/app/17450" target="_blank">Steam</a><br/><a href="http://dragonage.bioware.com/" target="_blank">Official Website</a><br/><a href="https://www.twitch.tv/directory/game/Dragon%20Age:%20Origins" target="_blank">Twitch</a><br/><a href="https://www.xbox.com/en-us/games/store/dragon-age-origins/BS9SX4Q6XJRF" target="_blank">Xbox</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Pre-acquista Dragon Age: Origins e riceverai:<h2 class="bb_tag" >Un Articolo Esclusivo di Steam</h2><br>                                                                                <span class="bb_img_ctn"><img class="bb_img" src="https://cdn.akamai.steamstatic.com/steam/apps/17450/extras/PromoItems_WickedOath.jpg" /></span>  Il Giuramento Oscuro<br><br>                                                                                CLa contessa Luciana di Antiva visse praticamente prigioniera nel castello di suo marito, finché uno schiavo elfico le offrì una via di fuga. In cambio della promessa di libertà, lo schiavo legò magicamente qualche goccia del sangue della contessa a un anello. La contessa accettò, e di lì a poco il conte venne trovato pugnalato, l'anello abbandonato al suo fianco. Luciana e lo schiavo non vennero più rivisti.<br><br>                                                                                <ul class="bb_ul"><li>Bonus di +10% ai danni critici<br><br>                                                                                </li><li>Bonus di +2 alla penetrazione dell'armatura<br><br>                                                                                </li><li>Bonus di +2 alla rigenerazione del vigore in combattimento<br><br>                                                                                </li></ul><h2 class="bb_tag" >Articolo Esclusivo per coloro che hanno effettuato il Pre-Acquisto</h2><br>                                                                                <span class="bb_img_ctn"><img class="bb_img" src="https://cdn.akamai.steamstatic.com/steam/apps/17450/extras/DLC_MemoryBand.jpg" /></span>  Fascia della Memoria<br><br>                                                                                Realizzati dai Formari, questi anelli intrisi di lyrium hanno lo scopo di aiutare gli apprendisti ad assimilare le lezioni. Funzionano piuttosto bene... forse anche troppo, dato che gli studenti meno dotati ne indossano anche tre o quattro per dito. <br><br>                                                                                <ul class="bb_ul"><li>Aggiunge +1% ai PE<br><br>                                                                                </li><li>Aggiunge un punto abilità<br><br>                                                                                </li></ul><h2 class="bb_tag" >Contenuto Aggiuntivo Incluso in Dragon Age: Origins:</h2><span class="bb_img_ctn"><img class="bb_img" src="https://cdn.akamai.steamstatic.com/steam/apps/17450/extras/BloodArmor.jpg" /></span>  Corazza del Sangue di Drago<br><br>                                                                                Commissionata da un malfamato cacciatore di draghi di Nevarra, quest'armatura è stata creata in un'epoca in cui la caccia ai draghi li aveva portati quasi all'estinzione. Infusa con il loro sangue, l'armatura divenne celebre quando il cacciatore morì per mano di alcuni umani, invece dei draghi contro i quali intendeva proteggersi.<br><br>                                                                                <ul class="bb_ul"><li>Conferisce un'ottima protezione in combattimento<br><br>                                                                                </li><li>La corazza sarà utilizzabile anche nell'imminente gioco di ruolo di fantascienza di BioWare, Mass Effect 2<br><br>                                                                                </li></ul><span class="bb_img_ctn"><img class="bb_img" src="https://cdn.akamai.steamstatic.com/steam/apps/17450/extras/StonePrisoner.jpg" /></span>  Prigioniera di pietra<br><br>                                                                                Verrà introdotto un nuovo membro del gruppo: Shale, un imponente golem dotato di uno stile di gioco unico e di nuove e devastanti capacità. Inoltre, include nuove missioni che ti porteranno a esplorare una città nanica fantasma che nasconde un segreto. Scopri nuovi oggetti, nuovi obiettivi e molto altro ancora!<br><br>                                                                                Scarica Il prigioniero di pietra e avrai accesso a Shale, un potente golem di pietra che può unirsi al gruppo e viaggiare nel regno diDragon Age: Origins. Uno dei personaggi più potenti del gioco, Shale sarà accompagnata da un'emozionante storia, da un doppiaggio esclusivo e da una missione di esplorazione unica. Il prigioniero di pietra contiene anche nuovi ambienti, oggetti e ore di gioco extra per la campagna di Dragon Age: Origins campaign.<br><br>                                                                                <ul class="bb_ul"><li>Un nuovo e potente membro del gruppo per aiutarti a salvare il Ferelden dal Flagello<br><br>                                                                                </li><li>Nuove aree, incluso il villaggio invaso di Honnleath<br><br>                                                                                </li><li>Nuovi obiettivi, oggetti e trame per Dragon Age: Origins<h2 class="bb_tag" >Informazioni su Dragon Age: Origins</h2><br>                                                                                Dai creatori di Mass Effect e Baldur’s Gate arriva l'epico fantasy oscuroDragon Age: Origins.<br><br>                                                                                Sei un Custode Grigio, uno degli ultimi membri del leggendario ordine di guardiani. Con il ritorno di un antico male e il regno in preda a una guerra civile, dovrai riunire le terre in lotta e uccidere una volta per tutte l'arcidemone.<br><strong>Un mondo incredibile da esplorare</strong><br><br>                                                                                <ul class="bb_ul"><li>L'universo più vasto mai creato da BioWare, con oltre 80 ore di gioco e una dimensione più che doppia rispetto a Mass Effect<br><br>                                                                                </li><li>Esplora decine di ambienti diversi e immergiti in un mondo in lotta sull'orlo del totale annientamento<br><br>                                                                                </li><li>Una storia epica, completamente plasmabile dalle tue azioni<br><br>                                                                                </li></ul><strong>Complesse scelte morali</strong><br><br>                                                                                <ul class="bb_ul"><li>Non ci sono decisioni facili<br><br>                                                                                </li><li>Personalizza la tua esperienza di gioco con Dragon Age: Origins fin dall'inizio, scegliendo tra sei diverse origini<br><br>                                                                                </li><li>Decidi come gestire problemi complessi come l'assassinio, il genocidio, il tradimento, la possessione e il sacrificio di bambini innocenti senza alcuna indicazione di bene/male a guidarti<br><br>                                                                                </li></ul><strong>Piena personalizzazione del personaggio</strong><br><br>                                                                                <ul class="bb_ul"><li>Modella il tuo eroe come preferisci<br><br>                                                                                </li><li>Una completa creazione del personaggio ti permetterà di plasmare un eroe unico e diverso da qualunque altro<br><br>                                                                                </li><li>Forgia la personalità e la moralità del tuo personaggio man mano che compi le tue scelte nel corso dell'avventura<br><br>                                                                                </li></ul><strong>Affronta combattimenti emozionanti e brutali</strong><br><br>                                                                                <ul class="bb_ul"><li>Combatti contro creature enormi e terrificant<br><br>                                                                                </li><li>Scatena poteri leggendari e scegli tra oltre 100 incantesimi e abilità diverse<br><br>                                                                                </li><li>Vivi adrenalinici e brutali combattimenti, decapitando i tuoi nemici o lanciando incantesimi in grado di farli esplodere dall'interno<br><br>                                                                                </li></ul></li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
