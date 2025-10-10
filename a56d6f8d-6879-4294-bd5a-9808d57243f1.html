@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Citizen Sleeper</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Citizen Sleeper</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-10/10/2025">10/10/2025</a> 17:53:02</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-10/10/2025">10/10/2025</a> 17:53:22</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-W2P_X">W2P_X</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-05/05/2022">05/05/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-81">81</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Jump Over the Age">Jump Over the Age</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Fellow Traveller">Fellow Traveller</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1578650/Citizen_Sleeper" target="_blank">Steam</a><br/><a href="https://www.fellowtraveller.games/citizen-sleeper" target="_blank">Official Website</a><br/><a href="https://www.youtube.com/fellowtraveller" target="_blank">YouTube</a><br/><a href="https://www.gog.com/game/citizen_sleeper" target="_blank">GOG</a><br/><a href="https://store.epicgames.com/p/citizen-sleeper-944858" target="_blank">Epic</a><br/><a href="https://twitter.com/citizensleeper" target="_blank">Twitter</a><br/><a href="https://discord.gg/fellowtraveller" target="_blank">Discord</a><br/><a href="https://en.wikipedia.org/wiki/Citizen_Sleeper" target="_blank">Wikipedia</a><br/><a href="https://www.reddit.com/r/CitizenSleeper/?rdt=61355" target="_blank">Subreddit</a><br/><a href="https://citizensleeper.telepedia.net/" target="_blank">Community Wiki</a><br/><a href="https://www.twitch.tv/directory/category/citizen-sleeper" target="_blank">Twitch</a><br/><a href="https://bsky.app/profile/jumpovertheage.bsky.social" target="_blank">Bluesky</a><br/><a href="https://www.nintendo.com/store/products/citizen-sleeper-switch/" target="_blank">Nintendo</a><br/><a href="https://www.xbox.com/en-us/games/store/citizen-sleeper/9N6F97F9WGL0" target="_blank">Xbox</a><br/><a href="https://store.playstation.com/en-us/concept/10007275" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><span class="bb_img_ctn"><picture><source srcset="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/f4c3309eb75932d8d0da9430bf9946da.poster.avif?t=1755218068" media="(prefers-reduced-motion: reduce)"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/f4c3309eb75932d8d0da9430bf9946da.apng?t=1755218068" class="bb_img" alt="GIOCA DI RUOLO TRA LE ROVINE DEL CAPITALISMO INTERPLANETARIO"></picture></span>Citizen Sleeper, uno dei giochi indie più acclamate del 2022 e nominato ai Game Awards, è un gioco di ruolo narrativo ispirato ai GdR da tavolo ambientato su Erlin's Eye, una stazione spaziale in rovina abitata da migliaia di persone che cercano di sopravvivere ai margini di una società capitalista interstellare.</p><p class="bb_paragraph"></p><p class="bb_paragraph">Tu sei un dormiente, una consapevolezza umana digitalizzata in un corpo artificiale, di proprietà di una società che ti rivuole indietro. Costretto alla convivenza con i pittoreschi sconosciuti che abitano l'Eye, devi stringere amicizie, guadagnarti da vivere e barcamenarti tra le fazioni di questa strana metropoli, se vuoi sperare di sopravvivere fino al prossimo ciclo.</p><p class="bb_paragraph"></p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/e626d940087372aabb47abeb4fd94dee.poster.avif?t=1755218068"></span><span class="bb_img_ctn"><picture><source srcset="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/3edf9ee51007972e0d19476a17a8c547.poster.avif?t=1755218068" media="(prefers-reduced-motion: reduce)"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/3edf9ee51007972e0d19476a17a8c547.apng?t=1755218068" class="bb_img" alt="ROLL THE DICE. DO THE WORK. GET PAID. SURVIVE." width="600" height="54"></picture></span>Ispirato ai giochi di ruolo da tavolo, Citizen Sleeper usa dadi, orologi e drive. A ogni ciclo usi i dadi che hai a disposizione per scegliere cosa fare del tuo tempo. Stringi o infrangi alleanze, scopri verità e sfuggi a chi ti dà la caccia. Sopravvivi e prospera, un ciclo alla volta.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/4b9e4a64e0f1608631852ca2290a699e.poster.avif?t=1755218068"></span><span class="bb_img_ctn"><picture><source srcset="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/4a53d018643013c70fb0b89ecf094352.poster.avif?t=1755218068" media="(prefers-reduced-motion: reduce)"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/4a53d018643013c70fb0b89ecf094352.apng?t=1755218068" class="bb_img" alt="SII PRESENTE PER I TUOI AMICI"></picture></span></p><p class="bb_paragraph">La stazione ospita personaggi di ogni provenienza che cercano di ricavarsi un posticino per vivere tra le stelle. Esperti di recupero, tecnici, hacker, baristi, venditori di street food, ognuno ha una storia che li ha portati qui. Scegli tu chi di loro vorrai aiutare e insieme date forma al vostro futuro.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/8b22ca8e5780e40e836c09ea651be6c5.poster.avif?t=1755218068"></span><span class="bb_img_ctn"><picture><source srcset="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/a690d97526fee5a1fa2b1cc00d67b490.poster.avif?t=1755218068" media="(prefers-reduced-motion: reduce)"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/a690d97526fee5a1fa2b1cc00d67b490.apng?t=1755218068" class="bb_img" alt="ACCEDI AI LORO SEGRETI"></picture></span>Alla fine, imparerai a usare i dadi per violare il cloud della stazione e accedere a decenni di dati digitali, scoprire nuove aree e svelare segreti. Questo è il tuo potere unico con cui puoi cambiare il tuo futuro. Segreti aziendali, IA ribelli e tesori di dati perduti attendono chi avrà il coraggio di immergersi nelle profondità delle reti della stazione.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/a59c96a4ae2faab5eed502c27dbb805a.poster.avif?t=1755218068"></span><span class="bb_img_ctn"><picture><source srcset="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/35fa362924e1d43522a9a68f21254d97.poster.avif?t=1755218068" media="(prefers-reduced-motion: reduce)"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/35fa362924e1d43522a9a68f21254d97.apng?t=1755218068" class="bb_img" alt="ESISTI PER MORIRE"></picture></span>Essen-Arp: per loro sei solo un oggetto, una risorsa in più in un portafoglio sparso tra le stelle. Sei il prodotto di un sistema abusivo, in un universo in cui l'espansione dell'umanità è segnata dallo sfruttamento e dall'estrazione. Scappa dai creatori del tuo corpo ormai in declino e segui la tua strada in un mondo fantascientifico immaginifico ma non così diverso dal nostro che esplora idee di precarietà, diritti della persona e libertà.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/9d1075841b961641190c5be80446ce02.poster.avif?t=1755218068"></span><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/4a6908620f32689cfb5fe11f97528658.avif?t=1755218068" alt="ACTION DICE" width="600" height="160"></span>Ad ogni ciclo lanci i tuoi dadi. Assegnali alle tante azioni disponibili sulla stazione. Con ogni azione sceglierai cosa e chi conta per te, plasmerai la vita di chi ti circonda e, alla fine dei conti, determinerai il futuro della stazione.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/366322b1b9988055752989e936ea1507.avif?t=1755218068" alt="TICKING CLOCKS" width="600" height="200"></span>Gli orologi tengono traccia delle tue azioni tue e di tutti gli altri sulla stazione. Da diventare un habitué all'Overlook Bar a proteggere un amico dagli sgherri di Yatagan, gli orologi ti consentono di tenere traccia dei tuoi progressi e dell'influenza che hai sul mondo intorno a te.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/547c205935696e1b38b9aac37a6e4e12.avif?t=1755218068" alt="DRIVES AND SKILLS" width="600" height="180"></span>Segui impulsi e non missioni, per scegliere a tuo piacimento le storie e le attività che ti interessano. Così plasmerai le cinque abilità del tuo personaggio (Tecnica, Interfaccia, Resistenza, Intuizione e Interazione), sbloccando vantaggi e bonus che rispecchiano e cambiano il modo in cui scegli di vivere in questo mondo.</p><p class="bb_paragraph"><span class="bb_img_ctn"><picture><source srcset="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/fb7b180b8a159298ce2d9904d02809bf.poster.avif?t=1755218068" media="(prefers-reduced-motion: reduce)"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/fb7b180b8a159298ce2d9904d02809bf.apng?t=1755218068" class="bb_img" alt="SVEGLIATI, DORMIENTE"></picture></span></p><h2 class="bb_tag">INFORMAZIONI SULLO SVILUPPATORE</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1578650/extras/33502000760418a22bb1b94dae37daa5.avif?t=1755218068" alt="Jump Over the Age" width="600" height="212"></span>Jump Over the Age è uno studio di sviluppo di giochi fondato da Gareth Damian Martin (ləi). Gareth si è aggiudicatə i premi GDCA e Indiecade ed è statə nominatə per un Games Award, diversi IGF Awards, un GDC Award e quattro BAFTA. È statə descrittə come "abile costruttore di mondi" (Edge Magazine) e "uno dei talenti indipendenti più entusiasmanti in circolazione" (Eurogamer).</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
