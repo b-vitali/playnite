@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Carmageddon: Max Damage</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Carmageddon: Max Damage</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:33:21</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:40:59</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-z_unassigned">z_unassigned</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-05/07/2016">05/07/2016</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-62">62</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-53">53</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Racing">Racing</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Stainless Games Ltd.">Stainless Games Ltd.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Stainless Games Ltd.">Stainless Games Ltd.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.facebook.com/carmageddon" target="_blank">Facebook</a><br/><a href="http://www.carmageddonmaxdamage.com/" target="_blank">Official Website</a><br/><a href="https://store.steampowered.com/app/505170" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/carmageddon_max_damage" target="_blank">GOG</a><br/><a href="https://www.twitch.tv/directory/game/Carmageddon:%20Max%20Damage" target="_blank">Twitch</a><br/><a href="https://store.playstation.com/en-us/concept/216121" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<strong>Carmageddon: Max Damage è il più recente capitolo della leggendaria serie Carmageddon. Carmageddon: Max Damage offre la sensazione di guida in cui i pedoni (e le mucche) equivalgono a dei punti, mentre i tuoi avversari sono un branco di pazzi al volante di un mix perverso di macchine assassine. È il miglior antidoto a tutti i giochi di corse!!</strong><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/505170/extras/5b3f99e49a585a35c641deacc2829a32.avif?t=1727253005"></span><br>Gioca partite adrenaliniche in diverse modalità contro avversari controllati dall'IA oppure online, contro tutta la massa di Carmafan! Fai carriera raggiungendo posizioni Carma sempre più alte oppure divertiti in multiplayer con le modalità Frantuma Vetture, Volpe e Segugi (la modalità preferita di Stainless MP!), Corsa Mortale o Assalto ai punti di controllo, tutte incredibilmente divertenti e con l'ultraviolenza, i potenziamenti folli e le risate a non finire tipici di Carmageddon…<br><br>E IN PIÙ! Puoi rivivere tutto lo scempio che hai fatto grazie al Sistema integrato di replay. Potrai scegliere diverse visuali e opzioni per i replay per non perderti mai più un incidente! Metti online i filmati con le tue gesta e vantati dei risultati raggiunti abbattendo i pedoni. E ce ne saranno parecchi: Obiettivi, Sfide e Oggetti collezionabili da cercare, che faranno divertire per ore ogni famiglia fra allegre pozze di sangue e schizzi d'olio.<br><br>Caratteristiche del gioco:<br><ul class="bb_ul"><li>Modalità Carriera per giocatore singolo<br></li><li>Modalità Gioco libero<br></li><li>Modalità Multiplayer online e offline<br></li><li>Modalità CarMODgeddon</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/505170/extras/a0714f6d463912987316cb8965ba5f61.avif?t=1727253005"></span><br>L'auto è la vera star! Carmageddon: Max Damage ti mette a disposizione un'ampia gamma di folli macchine di morte personalizzabili, ognuna con il suo "carattere" unico. Le auto di Carmageddon sono costruite con uno specifico obiettivo: fare a pezzi gli avversari e ammazzare i pedoni! Quasi 20 anni fa il primo Carmageddon ha inventato il concetto di fisica nei videogame e il danneggiamento in tempo reale di auto e scenari, ed è quindi una nostra responsabilità aggiornare questa tecnologia perché raggiunga lo stato dell'arte nella distruzione (e riparazione) delle auto. Schiaccia, piega, contorci e fai scempio della tua auto e di quelle degli avversari, sfasciandole o spezzandole in due; il gioco originale era incentrato sulla distruzione dei motori e sulla brutta fine che facevano i pedoni, e oggi abbiamo portato tutto questo a un altro livello!  Sono disponibili vari miglioramenti per la tua auto, fra i quali Potenza, Armatura e Offensiva, che ti permetteranno di personalizzare la potenza distruttiva che avrai premendo l'acceleratore.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/505170/extras/38719b79f0d7b87a75bed2771e90b9c8.avif?t=1727253005"></span><br>Un mucchio di vecchie glorie del Carmageddon originale ritornano in scena, assieme a delle facce nuove. Se una volta vedevi solo piccole fotografie, adesso vedrai tutti dalla testa ai piedi (beh, dalla testa alle ginocchia, nel caso di Screwie) in 3D e in HD - di solito mentre si schiantano sul parabrezza e lo sfondano, atterrando sul tuo!<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/505170/extras/c5ddd38a35b28140562455d6421806ec.avif?t=1727253005"></span><br>I nuovi ambienti sono una fusione dei pezzi dei paesaggi che ci siamo divertiti a distruggere in Carmageddon. I livelli di “Bleak City”, "Devil's Canyon", “Dusty Trails”, “MagNuChem” e "Snowy" ritornano dopo essere stati aggiornati, tutti con i loro luoghi memorabili come il Loop 'de' Loop, le pozze d'acido e lo Stadio di Football. Tutto è meravigliosamente surreale: diavolo, siamo anche riusciti a mettere un frullatore gigante all'interno di un livello!<br><br>La topografia e il livello di dettaglio sono stati aggiornati e migliorati; adesso ci sono ancora più cose su cui schiantarsi, atterrare, spezzare e da far catapultare addosso ai pedoni. "Belo colpo!" E, parlando di pedoni…<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/505170/extras/97a89f8500fc5ff8a796acf5a93397f2.avif?t=1727253005"></span><br>Come sempre, nel gioco c'è una grande varietà di pedoni adulti di tutte le età, forme e specie. I pedoni classici sono tornati, ad esempio l'anziana sul deambulatore o l'anziano con il bastone, così come la classica frase "Io ho fatto la guerra!", e in più le ragazze in bikini e gli stalloni in costume, grassi bastardi e mandrie di mucche in luoghi improbabili. A loro si uniscono dei volti nuovi: ciclisti, persone in sedia a rotelle e pedoni su scooter per disabili. Carmageddon tratta tutti i pedoni allo stesso modo: male!<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/505170/extras/b9c416763f1b13e116d41cf6ab0d54f3.avif?t=1727253005"></span><br>I potenziamenti sono tornati e adesso sono più divertenti, surreali, assurdi e fanno più male che mai! Molti dei potenziamenti classici tornano in forma super-migliorata, ad esempio Repellente, Canguri e Duro come il Marmo. E poi ci sono quelli nuovi, come la "Spinta Pelvica" e molti altri alla voce "Problemi"! Combina i powerup per creare combo assurde, come i Divertenti Pedoni pieni di Elio o i Pedoni senza gambe in estasi temporanea!<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/505170/extras/6f9d5e9f47bca1cc59c36d6a9bdc65a8.avif?t=1727253005"></span><br><ul class="bb_ul"><li>Classifiche. Mettiti alla prova per raggiungere la cima della classifica usando l'abilità o la forza bruta!<br></li><li>Obiettivi. Una perversa serie di Gesta e Imprese ti faranno guadagnare le ricompense che ogni giocatore sogna.<br></li><li>Sfide: Fai le cose più stupide, raccogli i gingilli più inutili e spreca ore di vita alla ricerca degli obiettivi più assurdamente inutili!<br></li><li>Cespugli di Venere: Abbiamo nascosto parecchi di questi fragranti Easter Egg all'interno del gioco per tenervi occupati e farvi divertire!<br></li><li>CarMODgeddon: Tutto il gioco è MODificabile per il vostro piacere di MODding!</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

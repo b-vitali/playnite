@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Shadow Complex Remastered</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Shadow Complex Remastered</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:33:20</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:40:07</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-z_unassigned">z_unassigned</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-16/03/2016">16/03/2016</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Platform">Platform</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-ChAIR Entertainment Group">ChAIR Entertainment Group</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Epic Games">Epic Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/385560" target="_blank">Steam</a><br/><a href="https://www.Shadowcomplex.com" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/shadowcomplexgame" target="_blank">Facebook</a><br/><a href="https://twitter.com/shadowcomplex" target="_blank">Twitter</a><br/><a href="https://www.twitch.tv/shadowcomplex" target="_blank">Twitch</a><br/><a href="https://www.epicgames.com/p/shadow-complex" target="_blank">Epic</a><br/><a href="https://www.instagram.com/chairgames/" target="_blank">Instagram</a><br/><a href="https://www.xbox.com/en-us/games/store/shadow-complex-remastered/BPP935F82L43" target="_blank">Xbox</a><br/><a href="https://store.playstation.com/en-us/concept/216508" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Shadow Complex Remastered<br>
+<br>
+Il side scroller Shadow Complex, "un'opera maestra contemporanea" basata sulla tecnologia Unreal Engine, venne pubblicato nel 2009, inizialmente soltanto per Xbox 360, e si guadagnò fin da subito lo status di classico. Adorato dai fan, si aggiudicò oltre 50 premi di Gioco dell'anno e Scelta della redazione, dimostrandosi uno dei giochi più popolari dell'anno per console.<br>
+<br>
+Questa innovativa rilettura del classico design a scorrimento laterale da parte di ChAIR, abbinata a un'esperienza di gioco attuale e all'avanguardia, ora è stata ulteriormente ritoccata e perfezionata: il risultato è Shadow Complex Remastered, che presenta tutti i contenuti del pluripremiato originale, ma anche una grafica migliorata, attacchi dinamici in mischia del tutto inediti e una nuova serie di obiettivi e sfide principali.<br>
+<br>
+In oltre 10 ore di esplorazione e combattimenti al cardiopalmo, i giocatori potranno scoprire diversi potenziamenti in grado di cambiare le sorti dell'avventura, che consentiranno loro di superare gli ostacoli, annientare orde di nemici e godere più a fondo di un'esperienza di gioco non lineare in un ambiente misterioso e impegnativo.<br>
+<br>
+Sinossi:<br>
+Shadow Complex Remastered catapulta l'escursionista smarrito Jason Fleming nel bel mezzo di una cospirazione contro il governo, animata da oscuri moventi politici e appoggiata da un'insurrezione militare. Insieme a Claire, la sua ragazza, Jason si imbatte per caso in un gruppo paramilitare ribelle chiamato Restaurazione. Ben presto, i due si rendono conto che l'obiettivo di questa frangia militare è avviare una catena di eventi che conduca gli Stati Uniti allo sfascio e nel vortice di una nuova guerra civile. Nel corso dell'avventura, Jason si impadronisce di numerosi "giocattolini" tecnologici sviluppati dalla Restaurazione, trasformandosi in un motore di distruzione a pieni giri.<br>
+<br>
+Elementi chiave dell'esperienza:<br>
+- Vivi l'avventura a piattaforme di riferimento ispirata ai side scroller classici.<br>
+- Esplora un mondo enorme e misterioso popolato da orde di nemici, sfide e combattimenti all'ultimo sangue contro i boss.<br>
+- Scopri decine di potenziamenti in grado di cambiare le sorti del gioco e oltre 100 miglioramenti e oggetti supplementari.<br>
+- Completa i nuovi obiettivi e le inedite sfide principali.<br>
+- Tuffati in un emozionante thriller d'azione scritto dal celebre autore di fumetti Peter David.<br>
+- Goditi l'incredibile grafica con una fisica coerente, resa possibile da Unreal Engine 3 di Epic Games.<br>
+<br>
+Caratteristiche aggiornate:<br>
+- Protagonisti, nemici, ambienti e interfaccia ad alta definizione.<br>
+- Illuminazione, post-processing ed effetti visivi migliorati.<br>
+- Nuovi attacchi in mischia.<br>
+- Nuovi obiettivi e inedite sfide principali.<br>
+- Supporta gli obiettivi, le classifiche, le liste di amici e i salvataggi sul cloud di Steam.<br>
+<br>
+<br>
+I fan possono reperire ulteriori informazioni sul sito ufficiale di Shadow Complex Remastered all'indirizzo www.ShadowComplex.com e su Twitter, Facebook, Instagram, YouTube e Twitch.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

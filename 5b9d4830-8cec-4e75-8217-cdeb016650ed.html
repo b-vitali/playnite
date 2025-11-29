@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Total War: NAPOLEON - Definitive Edition</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Total War: NAPOLEON - Definitive Edition</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:33:20</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:35:12</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-z_unassigned">z_unassigned</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-23/02/2010">23/02/2010</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-83">83</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Real Time Strategy (RTS)">Real Time Strategy (RTS)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Tactical">Tactical</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-The Creative Assembly">The Creative Assembly</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Feral Interactive">Feral Interactive</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Sega">Sega</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Typhoon Games">Typhoon Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://wiki.totalwar.com/w/Napoleon_Total_War" target="_blank">Community Wiki</a><br/><a href="https://en.wikipedia.org/wiki/Napoleon:_Total_War" target="_blank">Wikipedia</a><br/><a href="https://store.steampowered.com/app/34030" target="_blank">Steam</a><br/><a href="http://www.totalwar.com/" target="_blank">Official Website</a><br/><a href="https://www.youtube.com/user/thecreativeassembly" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/TotalWar" target="_blank">Facebook</a><br/><a href="https://twitter.com/totalwar" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/totalwarofficial" target="_blank">Instagram</a><br/><a href="https://www.reddit.com/r/totalwar" target="_blank">Subreddit</a><br/><a href="https://www.twitch.tv/directory/game/Napoleon:%20Total%20War" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/34030/extras/4fa215b2d1812a8d1ed4588fa5cc2fd6.poster.avif?t=1763642169"></span><br><br>Completa la tua collezione di Total War con questo Total War: NAPOLEON Definitive Edition, che include tutti i DLC e gli aggiornamenti rilasciati dal lancio del gioco:<br><br>Affronta La campagna spagnola, basato sull'intenso conflitto che imperversava nella penisola spagnola tra il 1811 e il 1814. Scegli una delle tre nazioni in guerra, Francia, Gran Bretagna o Spagna, e affronta la tua campagna attraverso una mappa indipendente con 32 nuove regioni controllabili.<br><br>Pacchetto CoalizioneCambia le sorti della guerra con il Pacchetto Coalizione, che introduce la Battaglia di Friedland, momento cruciale in cui Napoleone soffocò del tutto il tentativo di contenimento da parte della Russia. <br><br>Costruisci una forza inarrestabile con Eroi delle guerre napoleoniche e Pacchetto Aquila imperiale, che insieme aggiungono oltre 20 nuove unità leggendarie e di élite.<br><br>Total War: NAPOLEON Definitive Edition offre centinaia di avvincenti ore di gioco e ogni singolo contenuto creato per il gioco. Leggi tutti i dettagli qui sotto. <br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/34030/extras/d0b6586c1e3f295595c6742eb77bcc83.poster.avif?t=1763642169"></span><br><br>La storia è ancora da scrivere.<br><br>Dalla prima campagna Italica fino alla battaglia di Waterloo, Total War: NAPOLEON copre due decadi di implacabili battaglie, nel contesto di un mondo che brucia si svolge la storia di una straordinaria carriera militare. <br><br>Che tu scelga di giocare nelle vesti del leggendario generale o contro di lui, il risultato della guerra non è mai garantito. Il corso della storia dipende dalla tua abilità di guidare le tue truppe nelle più intense battaglie mai viste nella serie di Total War.<h2 class="bb_tag"><strong>Informazioni su La campagna spagnola</strong></h2><br><br>La campagna spagnola è una campagna indipendente ispirata al conflitto svoltosi sulla penisola iberica tra il 1811 e il 1814. Fu in questo periodo che la resistenza spagnola diede il nome al suo stile di combattere: Guerrilla, ovvero "piccola guerra".<br>Gioca la campagna da tre diverse prospettive, ognuna dotata di aspetti unici:<br>•	La Francia lotta per tenere controllata la resistenza, mentre tenta di convertire le regioni al suo orientamento politico.<br>•	La Gran Bretagna parte con poche regioni all'inizio ma riceve sufficienti introiti dal nord Europa e dal Nordamerica per potersi permettere di restituire regioni alla Spagna per ottenere in cambio aiuto con la Guerrilla.<br>•	La Spagna, anch'essa con una posizione di partenza limitata, dispone di accesso permanente alla tattiche di Guerrilla, potendo utilizzare efficacemente il vantaggio contro i francesi. <br>Scegli una delle tre nazioni coinvolte, Francia, Gran Bretagna o Spagna, e vivi uno dei conflitti più intensi dell'era napoleonica.<h2 class="bb_tag"><strong>Caratteristiche principali:</strong></h2><br><br>•	Una nuova e indipendente mappa della campagna della penisola iberica con 32 regioni controllabili.<br>•	5 nuovi tipi di unità da Guerrilla, reclutabili da ogni nazione, abili nel mimetizzarsi nel campo di battaglia e con l'abilità aggiuntiva di potersi posizionare al di fuori delle zone di schieramento delle loro fazioni: Tiradores (Fanteria da schermaglia), Cazadores, Lanceros (Cavalleria lancieri), Husares (Cavalleria leggera), Leader (Generale). <br>•	28 nuove unità in totale, sparse su tre nazioni giocabili, incluso il 95° fucilieri britannico, gli Ulani della Vistola francesi e i Coraceros spagnoli. <br>•	Due nuovi agenti per imporre la conversione politica: <br>•	Provocatori (solo per Francia e Gran Bretagna) hanno l'abilità di promuovere nelle regioni un sentimento anti opposizione, sollevare disordini, ridurre il tempo del turno per la ricerca e spiare passivamente.<br>•	Sacerdoti (solo per Spagna e Portogallo) hanno l'abilità di promuovere nelle regioni un sentimento anti opposizione e di istigare disordini.<br>•	Un nuovo agente di guerriglia per la Spagna: simile ad una spia ma con la nuova abilità di tormentare gli eserciti nemici, bloccandoli in una posizione e provocando logoramento.<br>•	Sistema di allineamento politico che vede i francesi combattere per aumentare il sentimento pro-francese in tutta la penisola.<h2 class="bb_tag"><strong>Informazioni sul Pacchetto Coalizione</strong></h2><br><br>Il Pacchetto Coalizione include 6 nuove unità e contiene la Battaglia di Friedland combattuta tra Francia e Russia.<br>La Battaglia di Friedland (14 giugno 1807) all'apice dell'impero di Napoleone, dove quest'ultimo correndo un grande rischio sconfisse nettamente la Russia, estromettendola dalla guerra e ponendo fine alla quarta coalizione.<br><br>Descrizione Unità: <br>•	Reggimento Ussari: questa unità di cavalleria leggera è efficace per affrontare schermagliatori e artiglieria che può attaccare da grandi distanze.<br>•	Coldstream Guards: Disciplinati, ben addestrati e rispettati, queste guardie di fanteria d'élite ispira le truppe vicine in battaglia. <br>•	Legione dell'Arciduca Carlo: fanteria da tiro caratterizzata da altissimo livello di disciplina, questo reggimento eccelle nell'utilizzo delle armi e nella precisione.<br>•	Luetzow's Freikorps: rapida cavalleria leggera, i cavalieri dei Freikorps di Luetzow sono eccellenti nel combattimento in mischia e in carica.<br>•	Ussari della Morte: cavalleria leggera armata di sciabola, gli Ussari della morte sono potenti quando caricano ed efficaci negli scontri corpo a corpo.<br>•	Guardie del corpo Semenovski: vestite interamente di bianco, queste guardie d'élite hanno sempre un morale eccellente e sono superbi nell'affrontare truppe di schermagliatori e di artiglieria.<h2 class="bb_tag"><strong>Informazioni su Eroi delle guerre napoleoniche</strong></h2><br><br>Queste esclusive unità d'élite saranno disponibili sulla mappa della campagna dopo che avrai sviluppato una tecnologia specifica o posseduto un territorio relativo.<br>Compariranno sia in modalità di gioco singolo che multigiocatore.<br><br>•	7° Lancieri (Francia) <br>•	Ulani di Brandeburgo (Prussia) <br>•	1° Ussari (Austria) <br>•	15° Ussari (Gran Bretagna) <br>•	1° Battaglione granatieri della Prussia orientale (Prussia) <br>•	6° Reggimento di fanteria leggera (Francia)<br>•	17° Reggimento jäger (Russia)<br>•	1° Reggimento personale dell'Imperatore (Austria)<br>•	18° Reggimento di fanteria di linea "I Coraggiosi" (Francia) <br>•	Moschettieri di Mosca (Russia)<h2 class="bb_tag"><strong>Informazioni su Pacchetto Aquila imperiale</strong></h2><br><br>Queste esclusive unità d'élite saranno disponibili sulla mappa della campagna dopo che avrai sviluppato una tecnologia specifica o posseduto un territorio relativo.<br>Compariranno sia in modalità di gioco singolo che multigiocatore.<br><br>•	Gran batteria "della Convenzione" (France) <br>•	HMS Elephant (Gran Bretagna) <br>•	Towarczys (Prussia) <br>•	Royal Scots Greys (Gran Bretagna) <br>•	5° Reggimento degli Ussari (Francia) <br>•	Ussari di Pavlograd (Russia) <br>•	8° Reggimento di guardie del corpo (Prussia) <br>•	47° Reggimento cechi (Austria) <br>•	88° Reggimento Connaught Rangers <br>•	Corazzieri dell'Arciduca Ferdinando (Austria)<br>•	Guardie del corpo cosacche (Russia)
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

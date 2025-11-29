@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hollow Knight</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Hollow Knight</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:33:20</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:39:46</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-W2P_XXX">W2P_XXX</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-24/02/2017">24/02/2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-92">92</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-91">91</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Platform">Platform</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Team Cherry">Team Cherry</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Team Cherry">Team Cherry</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/367520" target="_blank">Steam</a><br/><a href="https://en.wikipedia.org/wiki/Hollow_Knight" target="_blank">Wikipedia</a><br/><a href="https://www.gog.com/game/hollow_knight" target="_blank">GOG</a><br/><a href="http://hollowknight.com/" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/HollowKnightGame" target="_blank">Facebook</a><br/><a href="https://discord.gg/invite/hollowknight" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/HollowKnight" target="_blank">Subreddit</a><br/><a href="https://www.twitch.tv/directory/game/Hollow%20Knight" target="_blank">Twitch</a><br/><a href="https://www.youtube.com/@TeamCherry" target="_blank">YouTube</a><br/><a href="https://twitter.com/teamcherrygames" target="_blank">Twitter</a><br/><a href="https://hollowknight.wiki/w/Hollow_Knight_(game)" target="_blank">Community Wiki</a><br/><a href="https://store.playstation.com/en-us/concept/232654" target="_blank">Playstation</a><br/><a href="https://www.nintendo.com/us/store/products/hollow-knight-switch/" target="_blank">Nintendo</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">Hollow Knight si espande con Contenuti Gratuiti</h2><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/extras/a399aadabc685b452c6b1bd9f1db4f39.avif?t=1695270428"></span><br><strong>The Grimm Troupe</strong> - Accendi la Lanterna dell’Incubo. Evoca la Compagnia. Nuova Missione Principale. Nuovi Boss. Nuovi Amuleti. Nuovi Nemici. Nuovi Amici.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/extras/df891e146683facab1ecc6766245d76e.avif?t=1695270428"></span><br><strong>Hidden Dreams</strong> - Nuovi, potenti nemici emergono! Nuovi Boss. Nuovi Potenziamenti. Nuove Musiche.<h2 class="bb_tag">Affronta le profondità di un regno ormai dimenticato</h2>Al di sotto della città decadente di Pulveria giace un antico regno ormai in rovina. Sono in molti a essere attirati sotto la superficie, per cercare ricchezze, gloria o risposte ad antichi segreti.<br><br><br>Hollow Knight è un gioco d’azione e avventura nel classico stile 2D in un vasto mondo interconnesso. Esplora le caverne tortuose, le città antiche e le scorie mortali; combatti contro sudicie creature e fai amicizia con insetti bizzarri; risolvi antichi misteri nel cuore del regno.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/extras/246c62feb5696209633e6aa814efe002.avif?t=1695270428"></span><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/extras/3fc55bf4b0f0ad3d397fa32524fe6a42.avif?t=1695270428"></span><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/extras/047b6db17af596cbe46a169e61120c9b.webp?t=1695270428"></span><h2 class="bb_tag">Caratteristiche del gioco</h2><ul class="bb_ul"><li>Classica azione a scorrimento orizzontale con dettagli moderni.<br></li><li>Comandi precisi con impostazione 2D. Schiva, scatta e fatti strada fra gli avversari più temibili.<br></li><li>Esplora un vasto mondo interconnesso fatto di strade dimenticate, erbacce selvagge e città in rovina.<br></li><li>Forgia la tua strada! Il mondo di Nidosacro è aperto e vasto. Scegli i percorsi da intraprendere, i nemici da affrontare e trova la tua strada.<br></li><li>Evolvi con nuove e potenti abilità! Ottieni incantesimi, forza e velocità. Raggiungi grandi altezze su ali eteree. Scatta come un lampo fulmineo. Distruggi i nemici con la furia delle Anime!<br></li><li>Equipaggia gli incantesimi! Antiche reliquie donano nuovi e bizzarri poteri e abilità: scegli le tue preferite e rendi unico il tuo viaggio!<br></li><li>Un immenso cast di personaggi teneri e raccapriccianti portati in vita con l’animazione tradizionale 2D fotogramma per fotogramma.<br></li><li>Più di 130 nemici! 30 epici boss! Affronta bestie feroci e sbaraglia antichi cavalieri durante il tuo viaggio all’interno del regno. Rintraccia ogni singolo nemico malvagio e aggiungili tutti nel tuo Diario del Cacciatore!<br></li><li>Balza nelle menti altrui con l’Aculeo dei Sogni. Svela il lato più nascosto dei personaggi che incontri e dei nemici che affronti.<br></li><li>Gli splendidi paesaggi dipinti a mano con una magnifica parallasse donano un senso di profondità unico a un mondo a due dimensioni.<br></li><li>Traccia il viaggio con strumenti di mappatura molto precisi. Acquista bussole, calami, mappe e puntine per capire al meglio i molti paesaggi tortuosi di Hollow Knight.<br></li><li>Una colonna sonora inquietante e profonda, composta da Christopher Larkin, accompagna il giocatore durante il viaggio. La musica evoca la maestosità e la malinconia di una civiltà ormai in rovina.<br></li><li>Completa Hollow Knight per sbloccare la modalità Anima d’Acciaio, la sfida finale!</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/extras/7cf8255bb905f7fde0b77d3fe8b0638e.avif?t=1695270428"></span><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/extras/047b6db17af596cbe46a169e61120c9b.webp?t=1695270428"></span><h2 class="bb_tag">Un mondo suggestivo creato a mano</h2>Il mondo di Hollow Knight prende vita grazie a dettagli vividi e malinconici, le caverne sono rinvigorite da creature bizzarre e spaventose, ognuna animata a mano secondo lo stile 2D tradizionale.<br><br><br>Ogni nuova zona che scoprirai è meravigliosamente unica e stravagante, piena di nuove creature e personaggi. Visita il regno e scopri nuove meraviglie nascoste lontano dal sentiero battuto.<br><br>Se ti piacciono le esperienze di gioco classiche, i personaggi teneri ma raccapriccianti, le avventure epiche e i bellissimi mondi gotici, Hollow Knight è il gioco che fa per te!<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/extras/4b78bb20ca2230acfcd9056eac8a0a4a.avif?t=1695270428"></span><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/extras/8c4308fd31735705d6c6ba96bd6ac460.avif?t=1695270428"></span><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/extras/38a044f2b3b128cb495c5725ab7bbd88.avif?t=1695270428"></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

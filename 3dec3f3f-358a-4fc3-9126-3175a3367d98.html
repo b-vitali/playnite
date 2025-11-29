@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Baldur&#39;s Gate 3</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Baldur&#39;s Gate 3</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>8m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-14/09/2025">14/09/2025</a> 17:39:02</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:33:21</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:42:25</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-W2P_XXX">W2P_XXX</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-03/08/2023">03/08/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-96">96</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-94">94</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Larian Studios">Larian Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Larian Studios">Larian Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Split Screen">Split Screen</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Baldur%27s_Gate_III" target="_blank">Wikipedia</a><br/><a href="https://store.steampowered.com/app/1086940" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Baldur's%20Gate%203" target="_blank">Twitch</a><br/><a href="https://www.reddit.com/r/BaldursGate3/" target="_blank">Subreddit</a><br/><a href="https://www.instagram.com/larianstudios/" target="_blank">Instagram</a><br/><a href="https://discord.gg/invite/larianstudios" target="_blank">Discord</a><br/><a href="https://bg3.wiki/wiki/Baldur%27s_Gate_3" target="_blank">Community Wiki</a><br/><a href="https://bsky.app/profile/larianstudios.com" target="_blank">Bluesky</a><br/><a href="https://baldursgate3.game" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/baldursgate3/" target="_blank">Facebook</a><br/><a href="https://x.com/baldursgate3" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/LarianStudios/" target="_blank">YouTube</a><br/><a href="https://www.gog.com/en/game/baldurs_gate_iii" target="_blank">GOG</a><br/><a href="https://www.xbox.com/en-us/games/store/baldur's-gate-3/9ND58LQTG09T" target="_blank">Xbox</a><br/><a href="https://store.playstation.com/en-us/concept/10007460" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/extras/faa18f909c1176502233b9f0039695c4.poster.avif?t=1759825106"></span><br><br>Raduna il tuo gruppo e torna nei Reami Dimenticati per forgiare una storia di amicizia e tradimento, di sacrificio e sopravvivenza… e del fascino del potere assoluto.<br><br>Misteriose abilità si stanno risvegliando dentro di te, attinte da un parassita mind flayer impiantato nel tuo cervello. Resisti e rivolgi l'oscurità contro sé stessa... oppure abbraccia la corruzione e diventa l'incarnazione del male.<br><br>Dai creatori di Divinity: Original Sin 2 arriva un gioco di ruolo di nuova generazione, ambientato nel mondo di Dungeons &amp; Dragons.<br><br>From the creators of Divinity: Original Sin 2 comes a next-generation RPG, set in the world of Dungeons and Dragons.  <br><br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/extras/bc63d9d8cd31a20490b255fb52da5c0e.poster.avif?t=1759825106"></span><br><br>Crea il tuo personaggio scegliendo tra le 11 razze e le 12 classi del Manuale del Giocatore di D&amp;D, oppure gioca come personaggio origine con un background cucito su misura per te. Se vuoi combattere la corruzione che c'è in te, invece, vesti i panni dell'Oscura Pulsione, un personaggio origine completamente personalizzabile con una meccanica e una storia esclusive. Chiunque tu scelga di essere, avventure, tesori, amori e battaglie ti aspettano nel viaggio attraverso i Reami Dimenticati e oltre. Gioca da solo, oppure raduna il tuo gruppo in multiplayer fino a 4 giocatori.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/extras/3a7b2cb2594e1a27c2f3f0fa61d14d7d.webp?t=1759825106"></span><br><br>Rapito, infettato, perduto. Ti stai trasformando in un mostro, ma mentre la corruzione dentro di te cresce, così fa anche il tuo potere. Questo potere potrebbe aiutarti a sopravvivere, ma ci sarà un prezzo da pagare. I legami di fiducia che costruisci all'interno del tuo gruppo potrebbero essere la tua più grande forza, ben oltre quella concessa dalle tue capacità. Coinvolti in un conflitto tra diavoli, divinità e sinistre forze ultraterrene, tu e il tuo gruppo determinerete il destino dei Reami Dimenticati.<br><br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/extras/f4164544642a6974ba324b132712c62e.poster.avif?t=1759825106"></span><br><br>Realizzato con il nuovo motore Divinity 4.0, Baldur's Gate 3 offre una libertà senza precedenti nell'esplorare, sperimentare e interagire con un mondo  pieno di personaggi, pericoli e inganni. Una grandiosa narrazione cinematografica ti avvicina ai personaggi come mai prima d'ora mentre ti avventuri in un mondo immenso. Dalle foreste maledette dall'ombra alle caverne magiche dell'Underdark fino alla città stessa di Baldur's Gate, le tue azioni definiscono l'avventura, ma le tue scelte definiscono la tua eredità. Come sarai ricordato?<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/extras/23bedaecaebcfc1ed6e4a9f8b8f5b896.webp?t=1759825106"></span><br><br>I Reami Dimenticati sono un mondo vasto, dettagliato e vario, e ci sono segreti da scoprire dietro ogni angolo (la verticalità è una parte vitale dell'esplorazione!). Muoviti con furtività, salta, spingi, nuota e arrampicati mentre il tuo viaggio si dipana dalle profondità dell'Underdark ai tetti scintillanti di Baldur's Gate. Il modo in cui sopravviverai e l'impronta che lascerai sul mondo dipendono solo da te. Forgia la tua eredità, coltiva le relazioni importanti, fatti dei nemici e risolvi i problemi a modo tuo. Non ci saranno mai due avventure identiche.<br><br><br><ul class="bb_ul"><li>Multiplayer online fino a quattro giocatori<br>grazie al quale potrete unire le forze in combattimento, ooppure allontanarvi per seguire missioni e obiettivi differenti. Prepara il piano perfetto con i tuoi amici… o introduci un elemento di caos quando meno se l'aspettano. Le relazioni sono complicate, soprattutto quando hai un parassita nel cervello.<br><br></li><li>Personaggi Origine<br>7 eroi unici ti offrono un'esperienza esclusiva: ciascuno di essi possiede i suoi tratti unici, i suoi obiettivi e la sua visione del mondo. Le loro storie si intersecano con la narrazione generale e le tue scelte determineranno se queste storie si concluderanno con la redenzione, la salvezza, il dominio o uno dei tanti altri esiti. Gioca nei panni di un personaggio origine e goditi la sua avventura, oppure reclutane uno affinché combatta al tuo fianco.<br>Combattimento a turni evoluto<br>basato sul regolamento di D&amp;D 5e. Iniziativa di gruppo, vantaggi, svantaggi e modificatori ai tiro si aggiungono a un'IA avanzata, interazioni ambientali ampliate e a una nuova fluidità di combattimento che premia tattiche e strategie. Tre impostazioni di difficoltà ti permettono di personalizzare la sfida del combattimento: attiva i dadi bilanciati per dominare la battaglia o gioca in modalità Stratega per un'esperienza estrema.<br><br></li><li>Ampiezza e profondità senza precedenti<br>grazie a ben 31 sottorazze derivanti dalle 11 razze (umano, githyanki, mezzorco, nano, elfo, drow, tiefling, halfling, mezzelfo, gnomo e dragonide) e ben 46 sottoclassi derivanti dalle 12 classi. Oltre 600 incantesimi e azioni offrono una libertà di interazione quasi illimitata in un mondo creato a mano in cui l'esplorazione e sono solo le scelte del giocatore a definirne il viaggio. Il nostro pannello di creazione del personaggio offre una profondità senza precedenti, con una reattività che assicura che, chiunque tu sia, lascerai un'eredità unica dietro di te, fino al livello 12. Oltre 174 ore di filmati sono la conferma che, a prescindere dalle decisioni che prenderai, l'esperienza cinematografica seguirà ogni tuo viaggio.<br><br></li><li>Relazioni complesse e profonde<br>Con l'inquietante minaccia di guerra che incombe su Baldur's Gate e un'invasione di mind flayer all'orizzonte, le amicizie, anche se non necessarie, sono inevitabilmente destinate a nascere durante il tuo viaggio. Quello che ne consegue dipende da te, dato che potrai instaurare relazioni reali e vibranti con coloro che incontrerai lungo il cammino. Ogni compagno ha una propria bussola morale secondo la quale reagirà alle tue scelte. A quale costo resterai fedele ai tuoi ideali? Permetterai all'amore di plasmare le tue azioni? Le relazioni create lungo la strada per Baldur's Gate non sono soltanto un momento di pausa all'accampamento, ma aggiungono un'incredibile profondità alle molte decisioni che prenderai nel corso della tua avventura.<br><br></li><li>Personalizza la tua esperienza di streaming<br>in modo che, quando sei "live", la tua diretta non venga interrotto da orsi erranti, imprecazioni impreviste o biancheria intima assente. Baldur's Gate 3 offre tre diversi livelli di personalizzazione per gli streamer. Puoi disabilitare la nudità e i contenuti espliciti separatamente (o insieme) e puoi attivare l'integrazione con Twitch per interagire direttamente con il tuo pubblico, proprio come facciamo noi nei nostri showcase Panel From Hell! Grazie a queste opzioni potrai trasmettere Baldur's Gate 3 in streaming senza problemi, indipendentemente dal tuo stile di gioco.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/extras/250678836d14352d980c5556003957e2.poster.avif?t=1759825106"></span></li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

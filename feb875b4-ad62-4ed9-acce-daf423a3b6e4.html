@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Blood Rage: Digital Edition</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Blood Rage: Digital Edition</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:33:21</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-29/11/2025">29/11/2025</a> 18:42:14</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-z_unassigned">z_unassigned</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-27/05/2020">27/05/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Exozet">Exozet</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Asmodee Digital">Asmodee Digital</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1015930/Blood_Rage_Digital_Edition/" target="_blank">Steam</a><br/><a href="https://www.asmodee-digital.com/en/blood-rage/" target="_blank">Official Website</a><br/><a href="https://www.twitch.tv/directory/game/Blood%20Rage%3A%20Digital%20Edition" target="_blank">Twitch</a><br/><a href="https://x.com/TwinSailsInt" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/@twinsailsinteractive/" target="_blank">YouTube</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1015930/extras/7ca56716907724511cac272658a07a6d.avif?t=1760950360"></span><br><br><strong>Il Ragnarök sta arrivando!</strong> Il cielo sta crollando e la fine è prossima...<br>In Blood Rage, l'adattamento digitale del <strong>celebre gioco da tavolo, condurrai un fiero clan vichingo</strong> nella battaglia finale per conquistare la gloria e l'<strong>accesso al Valhalla</strong>, prima che il mondo perisca tra le fiamme.<br>Prendi il controllo dei tuoi guerrieri, saccheggia villaggi, fai buon uso dei doni degli dei e conquista il tuo posto al fianco di Odino nel Valhalla.<br><strong>La vita è effimera, ma la gloria è eterna. È il momento di scatenare la furia!</strong><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1015930/extras/e8d6d72a0b8ce74c5e63636768b7032f.avif?t=1760950360"></span><br><br>Creato dal celebre designer Eric Lang (<i>Rising Sun, Arcadia Quest, Chaos in the Old World</i>), Blood Rage ti <strong>mette a capo di uno dei sette antichi clan vichinghi</strong>: quello del Lupo, dell'Orso, del Serpente, del Corvo, dell'Ariete, del Cinghiale e del Cervo. <strong>Ogni clan ha le sue miniature</strong> uniche dei guerrieri e dei loro capi. <br>In Blood Rage, <strong>il tuo scopo è ottenere più gloria possibile</strong> prima della fine della terza e ultima era, che segna l'arrivo del Ragnarök.<br>In queste ore finali, gli <strong>dei elargiscono doni</strong> a ciascuno dei clan vichinghi all'inizio di ogni era.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1015930/extras/844a6bca799fa509f9bed5f559a1b70d.avif?t=1760950360"></span><br><br>Ogni divinità è generosa a modo suo: Frigga fornisce risorse e supporto, Tyr rafforza il tuo clan in battaglia, mentre Loki ricompensa per le sconfitte in battaglia o punisce gli avversari vincitori.<br><strong>La scelta dei doni</strong> degli dei determinerà la strategia da adottare. Scegli le carte saggiamente o priva i tuoi avversari di doni preziosi. <br>Il tuo clan può <strong>raggiungere la gloria in diversi modi</strong>: <br><ul class="bb_ul"><li><strong>Invadendo </strong>le mitiche terre di Midgard e le sue nove province, saccheggiando i villaggi e la provincia di Yggdrasil. <br></li><li><strong>Distruggendo </strong>gli altri clan in feroci battaglie e incontrando creature leggendarie della mitologia norrena. <br></li><li><strong>Compiendo </strong>imprese nel nome delle potenti divinità. <br></li><li><strong>Morendo </strong>gloriosamente in battaglia o durante il Ragnarök, come ogni vichingo che si rispetti. <br></li><li><strong>L'unica strategia perdente</strong> in Blood Rage è quella di <strong>sottrarsi alla lotta</strong>.  </li></ul>Guadagnarsi il proprio posto nel Valhalla nella modalità per giocatore singolo è il primo passo verso la gloria. Il trionfo eterno, però, può essere raggiunto soltanto raggiungendo la vetta nelle <strong>partite classificate multigiocatore online</strong>. <br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1015930/extras/bf93d36991d5d3c55c195f7ebaefb70b.poster.avif?t=1760950360"></span><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1015930/extras/c4702a4afdfe4121e522e6849a5c8d01.avif?t=1760950360"></span><br><br><ul class="bb_ul"><li><strong>Lotta per ottenere il tuo posto nel Valhalla</strong>: saccheggia, combatti, sacrificati... Vivi l'esperienza di un nuovo gioco di strategia dove la vittoria può essere raggiunta solo comandando i guerrieri sul campo di battaglia per affrontare il destino. <br></li><li><strong>Questa è Midgard</strong>: ti aspettano dozzine di miniature 3D riprodotte con cura e un tabellone dinamico fedele al gioco da tavolo originale. <br></li><li><strong>Gioco di strategia a più livelli di complessità</strong>: Blood Rage unisce una fase di draft, carte segrete, gestione di risorse e una dose abbondante di inganni. Devi pianificare la tua strategia, ma anche saperti adattare alle scelte degli avversari: vincere le battaglie non è sempre la migliore scelta possibile. <br></li><li><strong>Fino a cinque giocatori</strong>: contiene l'espansione che permette di giocare fino a cinque giocatori. Tutte le miniature dei clan dell'Ariete, del Cinghiale e del Cervo, così come le carte Dono degli dei dell'espansione per il 5° giocatore del gioco da tavolo sono disponibili gratuitamente in quest'edizione digitale. <br></li><li><strong>Diventa il più grande capo vichingo</strong>: gioca da solo contro l'IA, in multigiocatore locale tramite la modalità Passa e gioca oppure online grazie al sistema di graduatorie ELO e le classifiche. </li></ul><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1015930/extras/c23213b98b5ce87a17ff677bbce43755.poster.avif?t=1760950360"></span><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1015930/extras/01712d5261aa3394bb1d14a64548be21.avif?t=1760950360"></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
